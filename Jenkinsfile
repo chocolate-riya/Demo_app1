@@ -32,14 +32,14 @@ pipeline {
                 sh 'docker images'
             }
         }
-        stage('Push artifacts into artifactory') {
+       /* stage('Push artifacts into artifactory') {
              steps {
                    sh 'curl -fL https://getcli.jfrog.io | sh'
                    sh './jfrog rt u --url https://slk.jfrog.io/artifactory --access-token ${ARTIFACTORY_ACCESS_TOKEN} ./*.jar  fis-demo-release/'
                    jf 'rt build-publish'
                  //  sh  './jfrog rt bp  --url https://slk.jfrog.io/artifactory --access-token ${ARTIFACTORY_ACCESS_TOKEN} ${JOB_NAME} ${BUILD_NUMBER}'
              }
-        }
+        }*/
         /*stage('Upload'){
             steps{
                 rtUpload (
