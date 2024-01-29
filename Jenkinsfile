@@ -21,7 +21,7 @@ pipeline {
     stages {
         stage ('Checkout') {
             steps {
-                git branch: 'main', credentialsId: 'github', url: 'https://github.com/rajesh7979/Demo_app1.git'
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/Sanchita57/Demo_app1.git'
             }
         }
         stage ('Build') {
@@ -76,7 +76,7 @@ pipeline {
 				}
 			}
 		}
-		stage('Trivy Scan') {
+		/*stage('Trivy Scan') {
             steps {
                 // Install trivy
                 sh 'sudo apt-get -y install wget apt-transport-https gnupg lsb-release'
@@ -103,7 +103,7 @@ pipeline {
               
 
             }
-		}    
+		}   */ 
         stage('Scan and push image') {
 			steps {
 				dir('${WORKSPACE}') {
@@ -116,11 +116,11 @@ pipeline {
 			}
 		}
 
-		stage('Publish build info') {
+		/*stage('Publish build info') {
 			steps {
 				jf 'rt build-publish'
 			}
-		}
+		}*/
         /*stage ('Build docker image') {
             steps {
                 script {
@@ -129,17 +129,17 @@ pipeline {
                 }
             }
         }*/
-        stage('Notification') {
+        /*stage('Notification') {
             steps {
                 office365ConnectorSend webhookUrl: '$WEBHOOK_URL',
                 message: 'build is success',
                 status: 'Success'            
             }
-        }
+        }*/
     }        
        
     //Job Status check
-    post {
+   /* post {
         success {
             publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '.', reportFiles: 'report.html', reportName: 'Trivy Scan', reportTitles: 'Trivy Scan', useWrapperFileDirectly: true])
             echo 'Build successfully!'
@@ -160,5 +160,5 @@ pipeline {
         // )
             echo 'Build Failed'
         }
-    }
+    }*/
 }
