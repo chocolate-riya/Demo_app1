@@ -11,5 +11,13 @@ pipeline {
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/chocolate-riya/Demo_app1.git'
             }
         }
+        stage ('Build') {
+            steps {        
+                sh 'mvn clean install'
+                sh 'cp ./target/*.jar ./'
+                sh 'pwd'
+                //sh 'docker images'
+            }
+        }
     }   
 }
