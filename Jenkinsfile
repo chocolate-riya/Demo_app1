@@ -14,9 +14,9 @@ pipeline {
         stage ('Build') {
             steps {        
                 sh 'mvn clean install'
-                sh 'mvn package'
-                sh 'cp ./target/*.jar ./'
-                sh 'pwd'
+                //sh 'mvn package'
+                //sh 'cp ./target/*.jar ./'
+                //sh 'pwd'
                 //sh 'docker images'
             }
         }
